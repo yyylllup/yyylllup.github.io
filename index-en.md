@@ -2,7 +2,7 @@
 <table border="0">
   <tr>
     <td>
-      <h1>Zhang San</h1>
+      <h1>Yi Li</h1>
       <p><b>Master</b></p>
       <p><b>College of ××, ×× University</b></p>
       <p><b>E-mail：1234567789@qq.com</b></p>
