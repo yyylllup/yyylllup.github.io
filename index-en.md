@@ -4,9 +4,8 @@
     <td>
       <h1>Yi Li</h1>
       <p><b>Master</b></p>
-      <p><b>College of ××, ×× University</b></p>
-      <p><b>E-mail：1234567789@qq.com</b></p>
-      <p><b>Address：Rm××, ×× Building, ×× University, ×× Road, Nanjing</b></p>
+      <p><b>Beijing University of Posts and Telecommunications</b></p>
+      <p><b>E-mail：yili@bupt.edu.cn</b></p>
       <a href="/index.html">中文版</a>
     </td>
     <td width="25%">
