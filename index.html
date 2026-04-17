@@ -1,0 +1,1085 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yi Li | Personal Homepage</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap");
+
+    :root {
+      --bg-1: #f3fbff;
+      --bg-2: #d9f3ff;
+      --ink: #082437;
+      --ink-soft: #315062;
+      --line: rgba(10, 46, 69, 0.14);
+      --card: rgba(255, 255, 255, 0.68);
+      --accent: #007f8a;
+      --accent-2: #ff7f32;
+      --shadow: 0 22px 50px rgba(5, 38, 60, 0.18);
+      --radius: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
+      color: var(--ink);
+      background: radial-gradient(circle at 15% 20%, #ffffff 0%, var(--bg-1) 34%, var(--bg-2) 100%);
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .bg-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -3;
+    }
+
+    .bg-grid {
+      opacity: 0.4;
+      background-image:
+        linear-gradient(to right, rgba(7, 72, 95, 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(7, 72, 95, 0.06) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: radial-gradient(circle at 50% 40%, black 45%, transparent 90%);
+    }
+
+    .bg-gradient {
+      z-index: -4;
+      background:
+        radial-gradient(circle at 84% 24%, rgba(255, 127, 50, 0.28), transparent 44%),
+        radial-gradient(circle at 6% 84%, rgba(0, 127, 138, 0.30), transparent 48%);
+      filter: blur(10px);
+    }
+
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(0.5px);
+      pointer-events: none;
+      z-index: -2;
+      mix-blend-mode: multiply;
+      animation: drift 18s ease-in-out infinite;
+    }
+
+    .orb-a {
+      width: 210px;
+      height: 210px;
+      top: 12%;
+      left: 78%;
+      background: rgba(255, 127, 50, 0.2);
+    }
+
+    .orb-b {
+      width: 280px;
+      height: 280px;
+      top: 58%;
+      left: -60px;
+      background: rgba(0, 127, 138, 0.24);
+      animation-delay: -7s;
+    }
+
+    .orb-c {
+      width: 160px;
+      height: 160px;
+      top: 72%;
+      right: 8%;
+      background: rgba(7, 114, 148, 0.14);
+      animation-delay: -3.2s;
+    }
+
+    @keyframes drift {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        transform: translateY(-18px) scale(1.07);
+      }
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 22px 18px 48px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 12px;
+      z-index: 20;
+      padding: 12px 16px;
+      margin-bottom: 26px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      box-shadow: 0 8px 30px rgba(10, 35, 62, 0.08);
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-size: 0.97rem;
+      white-space: nowrap;
+    }
+
+    .nav {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+    }
+
+    .nav a {
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width 0.25s ease;
+    }
+
+    .nav a:hover::after {
+      width: 100%;
+    }
+
+    .lang-switch {
+      display: inline-flex;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.76);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 3px;
+      white-space: nowrap;
+    }
+
+    .lang-btn {
+      border: 0;
+      background: transparent;
+      padding: 6px 11px;
+      border-radius: 999px;
+      font: inherit;
+      font-size: 0.82rem;
+      cursor: pointer;
+      color: var(--ink-soft);
+      transition: all 0.2s ease;
+    }
+
+    .lang-btn.active {
+      background: linear-gradient(120deg, rgba(0, 127, 138, 0.95), rgba(8, 70, 106, 0.95));
+      color: #fff;
+      box-shadow: 0 6px 18px rgba(0, 103, 122, 0.32);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      padding: 28px;
+      border-radius: calc(var(--radius) + 4px);
+      border: 1px solid var(--line);
+      background: linear-gradient(150deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.6));
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero .kicker {
+      margin: 0;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 10px 0 4px;
+      font-size: clamp(2.2rem, 4vw, 3.3rem);
+      line-height: 0.98;
+      letter-spacing: 0.02em;
+    }
+
+    .hero .title {
+      margin: 0;
+      font-size: 1.04rem;
+      color: var(--ink-soft);
+      font-weight: 500;
+    }
+
+    .hero .summary {
+      margin: 18px 0 0;
+      color: #113950;
+      line-height: 1.72;
+      max-width: 64ch;
+    }
+
+    .hero-actions {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(110deg, var(--accent), #0c5f7d);
+      box-shadow: 0 12px 24px rgba(0, 94, 116, 0.3);
+    }
+
+    .btn-secondary {
+      border-color: rgba(7, 72, 95, 0.2);
+      background: rgba(255, 255, 255, 0.74);
+      color: var(--ink);
+    }
+
+    .chips {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      border: 1px solid rgba(5, 61, 83, 0.2);
+      background: rgba(255, 255, 255, 0.66);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      color: #15465f;
+      padding: 6px 10px;
+      font-weight: 500;
+    }
+
+    .focus-card {
+      height: 100%;
+      border-radius: var(--radius);
+      background: linear-gradient(150deg, rgba(14, 87, 112, 0.96), rgba(9, 64, 83, 0.96));
+      color: #ebfbff;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      box-shadow: 0 20px 36px rgba(7, 48, 65, 0.34);
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .focus-card::before {
+      content: "";
+      position: absolute;
+      width: 210px;
+      height: 210px;
+      right: -90px;
+      top: -90px;
+      background: radial-gradient(circle, rgba(255, 127, 50, 0.58), transparent 65%);
+      pointer-events: none;
+    }
+
+    .focus-card h3 {
+      margin: 0;
+      font-size: 0.92rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.86;
+    }
+
+    .focus-list {
+      margin: 14px 0 0;
+      padding-left: 18px;
+      line-height: 1.7;
+      font-size: 0.94rem;
+    }
+
+    .section {
+      margin-top: 26px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 40px rgba(9, 48, 69, 0.1);
+      padding: 24px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .section-tag {
+      margin: 0;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .section h2 {
+      margin: 5px 0 0;
+      font-size: clamp(1.5rem, 2.6vw, 2rem);
+    }
+
+    .section-intro {
+      margin: 0;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .glass-card {
+      border-radius: 14px;
+      border: 1px solid rgba(8, 55, 78, 0.15);
+      background: rgba(255, 255, 255, 0.72);
+      padding: 18px;
+    }
+
+    .glass-card h3 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .glass-card p {
+      margin: 10px 0 0;
+      color: #19435a;
+      line-height: 1.68;
+    }
+
+    .grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      border-radius: 14px;
+      border: 1px solid rgba(8, 55, 78, 0.15);
+      background: rgba(255, 255, 255, 0.74);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .card .meta {
+      margin: 0;
+      color: #1a6684;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    .card p {
+      margin: 0;
+      color: #1b475e;
+      line-height: 1.64;
+      font-size: 0.93rem;
+    }
+
+    .paper-link {
+      margin-top: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: #0a5876;
+      font-weight: 600;
+      font-size: 0.86rem;
+    }
+
+    .paper-link:hover {
+      text-decoration: underline;
+    }
+
+    .contact {
+      margin-top: 26px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(8, 55, 78, 0.17);
+      background: linear-gradient(130deg, rgba(0, 127, 138, 0.94), rgba(8, 70, 106, 0.95));
+      color: #f4feff;
+      padding: 24px;
+      box-shadow: 0 20px 44px rgba(7, 47, 68, 0.3);
+    }
+
+    .contact h2 {
+      margin: 0;
+      font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+    }
+
+    .contact p {
+      margin: 10px 0 0;
+      max-width: 64ch;
+      line-height: 1.72;
+      color: rgba(244, 254, 255, 0.93);
+    }
+
+    .contact-links {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .contact-links a {
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .contact-links a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-1px);
+    }
+
+    footer {
+      margin-top: 18px;
+      text-align: center;
+      color: #3f6275;
+      font-size: 0.84rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .topbar {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .nav {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .hero,
+      .section,
+      .contact {
+        padding: 18px;
+      }
+
+      .about-grid,
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-layer bg-gradient"></div>
+  <div class="bg-layer bg-grid"></div>
+  <div class="orb orb-a"></div>
+  <div class="orb orb-b"></div>
+  <div class="orb orb-c"></div>
+
+  <div class="page">
+    <header class="topbar reveal">
+      <div class="brand">LI YI · PORTFOLIO</div>
+      <nav class="nav">
+        <a href="#about" id="nav-about"></a>
+        <a href="#awards" id="nav-awards"></a>
+        <a href="#papers" id="nav-papers"></a>
+        <a href="#practice" id="nav-practice"></a>
+        <a href="#projects" id="nav-projects"></a>
+        <a href="#contact" id="nav-contact"></a>
+      </nav>
+      <div class="lang-switch" aria-label="language switch">
+        <button class="lang-btn" data-lang-btn="zh">中文</button>
+        <button class="lang-btn" data-lang-btn="en">EN</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero reveal" id="home">
+        <div>
+          <p class="kicker" id="hero-kicker"></p>
+          <h1 id="hero-name"></h1>
+          <p class="title" id="hero-title"></p>
+          <p class="summary" id="hero-summary"></p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://github.com/yyylllup" target="_blank" rel="noopener noreferrer" id="cta-github"></a>
+            <a class="btn btn-secondary" href="./简历-李仪.docx" id="cta-resume"></a>
+            <a class="btn btn-secondary" href="mailto:yili@bupt.edu.cn" id="cta-mail"></a>
+          </div>
+          <div class="chips">
+            <span class="chip" id="chip-1"></span>
+            <span class="chip" id="chip-2"></span>
+            <span class="chip" id="chip-3"></span>
+          </div>
+        </div>
+        <aside class="focus-card">
+          <h3 id="focus-title"></h3>
+          <ul class="focus-list" id="focus-list"></ul>
+        </aside>
+      </section>
+
+      <section class="section reveal" id="about">
+        <div class="section-head">
+          <div>
+            <p class="section-tag" id="about-tag"></p>
+            <h2 id="about-title"></h2>
+          </div>
+        </div>
+        <p class="section-intro" id="about-intro"></p>
+        <div class="about-grid">
+          <article class="glass-card">
+            <h3 id="edu-title"></h3>
+            <p id="edu-main"></p>
+            <p id="edu-time"></p>
+          </article>
+          <article class="glass-card">
+            <h3 id="skill-title"></h3>
+            <p id="skill-main"></p>
+            <p id="skill-sub"></p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" id="awards">
+        <div class="section-head">
+          <div>
+            <p class="section-tag" id="awards-tag"></p>
+            <h2 id="awards-title"></h2>
+          </div>
+        </div>
+        <p class="section-intro" id="awards-intro"></p>
+        <div class="grid grid-3" id="awards-grid"></div>
+      </section>
+
+      <section class="section reveal" id="papers">
+        <div class="section-head">
+          <div>
+            <p class="section-tag" id="papers-tag"></p>
+            <h2 id="papers-title"></h2>
+          </div>
+        </div>
+        <p class="section-intro" id="papers-intro"></p>
+        <div class="grid grid-2" id="papers-grid"></div>
+      </section>
+
+      <section class="section reveal" id="practice">
+        <div class="section-head">
+          <div>
+            <p class="section-tag" id="practice-tag"></p>
+            <h2 id="practice-title"></h2>
+          </div>
+        </div>
+        <p class="section-intro" id="practice-intro"></p>
+        <div class="grid grid-3" id="practice-grid"></div>
+      </section>
+
+      <section class="section reveal" id="projects">
+        <div class="section-head">
+          <div>
+            <p class="section-tag" id="projects-tag"></p>
+            <h2 id="projects-title"></h2>
+          </div>
+        </div>
+        <p class="section-intro" id="projects-intro"></p>
+        <div class="grid grid-2" id="projects-grid"></div>
+      </section>
+
+      <section class="contact reveal" id="contact">
+        <h2 id="contact-title"></h2>
+        <p id="contact-intro"></p>
+        <div class="contact-links">
+          <a href="mailto:yili@bupt.edu.cn" id="contact-mail"></a>
+          <a href="https://github.com/yyylllup" target="_blank" rel="noopener noreferrer" id="contact-github"></a>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer-text"></footer>
+  </div>
+
+  <script>
+    const content = {
+      zh: {
+        nav: {
+          about: "简介",
+          awards: "获奖",
+          papers: "论文",
+          practice: "课外实践",
+          projects: "项目",
+          contact: "联系"
+        },
+        hero: {
+          kicker: "INFORMATION SECURITY · BUPT",
+          name: "李仪",
+          title: "联邦学习安全与智能系统方向",
+          summary: "北京邮电大学网络空间安全学院信息安全本科生，关注联邦学习安全、模型鲁棒性与多智能体系统。欢迎合作交流科研与工程项目。",
+          ctaGithub: "查看 GitHub",
+          ctaResume: "下载简历",
+          ctaMail: "邮件联系",
+          chips: ["联邦学习安全", "Multi-Agent", "安全系统工程"],
+          focusTitle: "当前关注",
+          focusList: [
+            "横向与纵向联邦学习攻防",
+            "模型投毒与鲁棒聚合机制",
+            "中英双语数据集构建",
+            "课程与科研场景下的 Agent 应用"
+          ]
+        },
+        about: {
+          tag: "Profile",
+          title: "个人简介",
+          intro: "页面信息根据个人简历整理，突出科研、竞赛和实践能力。教育经历仅保留核心信息，不展示课程成绩。",
+          eduTitle: "教育经历",
+          eduMain: "北京邮电大学 · 网络空间安全学院 · 信息安全（学士）",
+          eduTime: "2023.09 - 2027.06（预计）",
+          skillTitle: "能力关键词",
+          skillMain: "Python / C / C++ · Federated Learning · RAG · Multi-Agent",
+          skillSub: "英语：CET-4 / CET-6"
+        },
+        awards: {
+          tag: "Awards",
+          title: "获奖经历",
+          intro: "近两年学术竞赛与综合荣誉。",
+          list: [
+            {
+              meta: "2024 · 2025",
+              title: "国家励志奖学金",
+              desc: "连续两年获得，覆盖学业与综合表现。"
+            },
+            {
+              meta: "2025",
+              title: "全国大学生电子设计竞赛",
+              desc: "国家二等奖（C题），负责视觉模块核心开发。"
+            },
+            {
+              meta: "2025",
+              title: "全国大学生软件创新大赛",
+              desc: "软件系统安全赛华北赛区“作品赛”二等奖。"
+            },
+            {
+              meta: "2024 · 2025",
+              title: "优秀学生干部奖",
+              desc: "连续两年获奖，面向学院组织与管理实践。"
+            }
+          ]
+        },
+        papers: {
+          tag: "Publications",
+          title: "论文与研究",
+          intro: "聚焦联邦学习安全中的模型投毒、标签泄露和防御鲁棒性。",
+          list: [
+            {
+              meta: "AAAI 2026 · CCF-A · 三作",
+              title: "Good Gradients Poison Your Model: Evading Defenses in Federated Learning via Boundary-adaptive Perturbation",
+              desc: "提出 BAPerturb，针对不同边界型防御机制提升攻击隐蔽性与有效性，并在多数据集上验证。",
+              linkText: "查看论文",
+              link: "https://ojs.aaai.org/index.php/AAAI/article/view/38328/42290"
+            },
+            {
+              meta: "Neurocomputing 2026 · 四作",
+              title: "Vulnerabilities of Label and Model Protection in Vertical Federated Learning Based on Simulation Models",
+              desc: "参与 VFLLIMA 攻击框架研究，分析纵向联邦学习中的标签泄露与模型操控风险。",
+              linkText: "查看 DOI",
+              link: "https://doi.org/10.1016/j.neucom.2025.131839"
+            }
+          ]
+        },
+        practice: {
+          tag: "Practice",
+          title: "课外实践",
+          intro: "在组织管理、领导力训练和体育团队中持续参与与输出。",
+          list: [
+            {
+              meta: "2024.10 - 2024.12",
+              title: "卓越领导力提升实验班",
+              desc: "入围率 25%，系统参与领导决策、团队管理与商业战略研讨。"
+            },
+            {
+              meta: "2024.09 - 2025.09",
+              title: "学院办公室副部长",
+              desc: "组织联学共建活动与院内实践安排，协同多部门推进事务落地。"
+            },
+            {
+              meta: "2024.05 - 2025.05",
+              title: "体育竞赛与团队实践",
+              desc: "校运会跳高/跳远奖项、女篮“篮俱杯”冠亚军，并参与国旗护卫队工作。"
+            }
+          ]
+        },
+        projects: {
+          tag: "Projects",
+          title: "代表项目",
+          intro: "精选与安全研究、智能体和系统实现相关的项目经历。",
+          list: [
+            {
+              meta: "2025.09 - 至今",
+              title: "网络安全学院学生创新资助计划（三期）",
+              desc: "中央网信办指导项目申请人，合作方蚂蚁集团，围绕联邦学习安全构建异常检测与鲁棒聚合防御框架。"
+            },
+            {
+              meta: "2025.10 - 2026.01",
+              title: "基于 Multi-Agent 的反诈对话数据集生成系统",
+              desc: "前期负责人，搭建闭环数据生产平台并推进中英双语数据链路，实现可复用的数据集构建流程。"
+            },
+            {
+              meta: "2025.07 - 2025.09",
+              title: "《网络安全分析实践》课程智能教学辅助智能体",
+              desc: "负责人，完成教学场景 Agent 工作流与知识库检索链路设计，支持连续问答与实验报告辅导。"
+            },
+            {
+              meta: "2026.01 - 2026.02",
+              title: "端到端加密网络存储系统",
+              desc: "成员，围绕认证、密钥管理、加密传输与访问控制完成安全存储方案设计与实现。"
+            }
+          ]
+        },
+        contact: {
+          title: "联系我",
+          intro: "如需合作科研、竞赛项目或技术交流，欢迎邮件联系。",
+          mail: "邮箱：yili@bupt.edu.cn",
+          github: "GitHub：yyylllup"
+        },
+        footer: "© 2026 Yi Li · Built for GitHub Pages"
+      },
+      en: {
+        nav: {
+          about: "About",
+          awards: "Awards",
+          papers: "Publications",
+          practice: "Practice",
+          projects: "Projects",
+          contact: "Contact"
+        },
+        hero: {
+          kicker: "INFORMATION SECURITY · BUPT",
+          name: "Yi Li",
+          title: "Federated Learning Security and Intelligent Systems",
+          summary: "B.S. student in Information Security at Beijing University of Posts and Telecommunications. I focus on federated learning security, model robustness, and multi-agent systems.",
+          ctaGithub: "View GitHub",
+          ctaResume: "Download Resume",
+          ctaMail: "Email Me",
+          chips: ["Federated Learning Security", "Multi-Agent", "Secure System Engineering"],
+          focusTitle: "Current Focus",
+          focusList: [
+            "Attack and defense in horizontal and vertical FL",
+            "Model poisoning and robust aggregation",
+            "Bilingual dataset construction",
+            "Agent applications for education and research"
+          ]
+        },
+        about: {
+          tag: "Profile",
+          title: "About Me",
+          intro: "This page is organized from my resume with emphasis on research, competitions, and practice. Education is kept concise without listing course scores.",
+          eduTitle: "Education",
+          eduMain: "BUPT, School of Cyberspace Security, B.S. in Information Security",
+          eduTime: "Sep 2023 - Jun 2027 (Expected)",
+          skillTitle: "Core Skills",
+          skillMain: "Python / C / C++ · Federated Learning · RAG · Multi-Agent",
+          skillSub: "English: CET-4 / CET-6"
+        },
+        awards: {
+          tag: "Awards",
+          title: "Selected Awards",
+          intro: "Academic competition results and comprehensive honors in recent years.",
+          list: [
+            {
+              meta: "2024 · 2025",
+              title: "National Encouragement Scholarship",
+              desc: "Received in two consecutive years for academic and overall performance."
+            },
+            {
+              meta: "2025",
+              title: "National Undergraduate Electronic Design Contest",
+              desc: "National Second Prize (Problem C), led the core computer-vision module."
+            },
+            {
+              meta: "2025",
+              title: "National Undergraduate Software Innovation Contest",
+              desc: "Second Prize in the North China regional track of software system security."
+            },
+            {
+              meta: "2024 · 2025",
+              title: "Outstanding Student Cadre Award",
+              desc: "Recognized for student organization and coordination work."
+            }
+          ]
+        },
+        papers: {
+          tag: "Publications",
+          title: "Publications and Research",
+          intro: "My research centers on model poisoning, label leakage, and defense robustness in federated learning.",
+          list: [
+            {
+              meta: "AAAI 2026 · CCF-A · Third Author",
+              title: "Good Gradients Poison Your Model: Evading Defenses in Federated Learning via Boundary-adaptive Perturbation",
+              desc: "Proposed BAPerturb to improve attack stealth and effectiveness under multiple boundary-based defenses.",
+              linkText: "Paper Link",
+              link: "https://ojs.aaai.org/index.php/AAAI/article/view/38328/42290"
+            },
+            {
+              meta: "Neurocomputing 2026 · Fourth Author",
+              title: "Vulnerabilities of Label and Model Protection in Vertical Federated Learning Based on Simulation Models",
+              desc: "Contributed to VFLLIMA framework and investigated label leakage and model manipulation risks in VFL.",
+              linkText: "DOI Link",
+              link: "https://doi.org/10.1016/j.neucom.2025.131839"
+            }
+          ]
+        },
+        practice: {
+          tag: "Practice",
+          title: "Extracurricular Practice",
+          intro: "Hands-on work across leadership training, student affairs, and team sports.",
+          list: [
+            {
+              meta: "Oct 2024 - Dec 2024",
+              title: "Leadership Excellence Program",
+              desc: "Selected with a 25% acceptance rate; trained in decision-making, teamwork, and strategy."
+            },
+            {
+              meta: "Sep 2024 - Sep 2025",
+              title: "Deputy Director, School Office",
+              desc: "Coordinated inter-school activities and managed academic-term practice events."
+            },
+            {
+              meta: "May 2024 - May 2025",
+              title: "Sports and Team Practice",
+              desc: "Track-and-field and basketball achievements, plus service in the university flag-guard team."
+            }
+          ]
+        },
+        projects: {
+          tag: "Projects",
+          title: "Selected Projects",
+          intro: "Representative projects in security research, agent systems, and practical engineering.",
+          list: [
+            {
+              meta: "Sep 2025 - Present",
+              title: "Student Innovation Funding Program (Phase III)",
+              desc: "Applicant in a national program guided by CAC, collaborating with Ant Group on FL security and robust aggregation."
+            },
+            {
+              meta: "Oct 2025 - Jan 2026",
+              title: "Multi-Agent Anti-fraud Dialogue Dataset Generation System",
+              desc: "Early-stage lead, built a closed-loop generation pipeline and implemented bilingual dataset workflows."
+            },
+            {
+              meta: "Jul 2025 - Sep 2025",
+              title: "AI Teaching Assistant for Network Security Analysis Practice",
+              desc: "Project lead for Agent workflow and retrieval pipeline to support continuous QA and lab guidance."
+            },
+            {
+              meta: "Jan 2026 - Feb 2026",
+              title: "End-to-end Encrypted Network Storage System",
+              desc: "Team member, designed and implemented authentication, key management, encrypted transfer, and secure storage."
+            }
+          ]
+        },
+        contact: {
+          title: "Contact",
+          intro: "If you are interested in research collaboration, competitions, or technical projects, feel free to reach out by email.",
+          mail: "Email: yili@bupt.edu.cn",
+          github: "GitHub: yyylllup"
+        },
+        footer: "© 2026 Yi Li · Built for GitHub Pages"
+      }
+    };
+
+    const setText = (id, value) => {
+      const node = document.getElementById(id);
+      if (node) node.textContent = value;
+    };
+
+    const renderCardList = (containerId, list, withLink = false) => {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      container.innerHTML = list.map((item) => {
+        const linkBlock = withLink
+          ? `<a class="paper-link" href="${item.link}" target="_blank" rel="noopener noreferrer">${item.linkText}</a>`
+          : "";
+        return `
+          <article class="card">
+            <p class="meta">${item.meta}</p>
+            <h3>${item.title}</h3>
+            <p>${item.desc}</p>
+            ${linkBlock}
+          </article>
+        `;
+      }).join("");
+    };
+
+    const render = (lang) => {
+      const t = content[lang] || content.zh;
+      document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+
+      setText("nav-about", t.nav.about);
+      setText("nav-awards", t.nav.awards);
+      setText("nav-papers", t.nav.papers);
+      setText("nav-practice", t.nav.practice);
+      setText("nav-projects", t.nav.projects);
+      setText("nav-contact", t.nav.contact);
+
+      setText("hero-kicker", t.hero.kicker);
+      setText("hero-name", t.hero.name);
+      setText("hero-title", t.hero.title);
+      setText("hero-summary", t.hero.summary);
+      setText("cta-github", t.hero.ctaGithub);
+      setText("cta-resume", t.hero.ctaResume);
+      setText("cta-mail", t.hero.ctaMail);
+      setText("chip-1", t.hero.chips[0]);
+      setText("chip-2", t.hero.chips[1]);
+      setText("chip-3", t.hero.chips[2]);
+      setText("focus-title", t.hero.focusTitle);
+
+      const focusList = document.getElementById("focus-list");
+      focusList.innerHTML = t.hero.focusList.map((item) => `<li>${item}</li>`).join("");
+
+      setText("about-tag", t.about.tag);
+      setText("about-title", t.about.title);
+      setText("about-intro", t.about.intro);
+      setText("edu-title", t.about.eduTitle);
+      setText("edu-main", t.about.eduMain);
+      setText("edu-time", t.about.eduTime);
+      setText("skill-title", t.about.skillTitle);
+      setText("skill-main", t.about.skillMain);
+      setText("skill-sub", t.about.skillSub);
+
+      setText("awards-tag", t.awards.tag);
+      setText("awards-title", t.awards.title);
+      setText("awards-intro", t.awards.intro);
+      renderCardList("awards-grid", t.awards.list, false);
+
+      setText("papers-tag", t.papers.tag);
+      setText("papers-title", t.papers.title);
+      setText("papers-intro", t.papers.intro);
+      renderCardList("papers-grid", t.papers.list, true);
+
+      setText("practice-tag", t.practice.tag);
+      setText("practice-title", t.practice.title);
+      setText("practice-intro", t.practice.intro);
+      renderCardList("practice-grid", t.practice.list, false);
+
+      setText("projects-tag", t.projects.tag);
+      setText("projects-title", t.projects.title);
+      setText("projects-intro", t.projects.intro);
+      renderCardList("projects-grid", t.projects.list, false);
+
+      setText("contact-title", t.contact.title);
+      setText("contact-intro", t.contact.intro);
+      setText("contact-mail", t.contact.mail);
+      setText("contact-github", t.contact.github);
+      setText("footer-text", t.footer);
+
+      document.querySelectorAll(".lang-btn").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.langBtn === lang);
+      });
+
+      localStorage.setItem("site_lang", lang);
+    };
+
+    const bindLanguageSwitch = () => {
+      const buttons = document.querySelectorAll(".lang-btn");
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          render(btn.dataset.langBtn);
+        });
+      });
+    };
+
+    const bindReveal = () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, { threshold: 0.15 });
+      document.querySelectorAll(".reveal").forEach((node) => observer.observe(node));
+    };
+
+    bindLanguageSwitch();
+    bindReveal();
+    const saved = localStorage.getItem("site_lang");
+    const detected = navigator.language && navigator.language.toLowerCase().startsWith("zh") ? "zh" : "en";
+    render(saved || detected);
+  </script>
+</body>
+</html>
