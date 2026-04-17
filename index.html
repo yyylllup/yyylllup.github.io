@@ -581,13 +581,10 @@
           <p class="summary" id="hero-summary"></p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="https://github.com/yyylllup" target="_blank" rel="noopener noreferrer" id="cta-github"></a>
-            <a class="btn btn-secondary" href="./简历-李仪.docx" id="cta-resume"></a>
             <a class="btn btn-secondary" href="mailto:yili@bupt.edu.cn" id="cta-mail"></a>
           </div>
           <div class="chips">
             <span class="chip" id="chip-1"></span>
-            <span class="chip" id="chip-2"></span>
-            <span class="chip" id="chip-3"></span>
           </div>
         </div>
         <aside class="focus-card">
@@ -689,29 +686,27 @@
         hero: {
           kicker: "INFORMATION SECURITY · BUPT",
           name: "李仪",
-          title: "联邦学习安全与智能系统方向",
-          summary: "北京邮电大学网络空间安全学院信息安全本科生，关注联邦学习安全、模型鲁棒性与多智能体系统。欢迎合作交流科研与工程项目。",
+          title: "北京邮电大学网络空间安全学院信息安全本科生",
+          summary: "欢迎合作交流科研与工程项目。",
           ctaGithub: "查看 GitHub",
-          ctaResume: "下载简历",
           ctaMail: "邮件联系",
-          chips: ["联邦学习安全", "Multi-Agent", "安全系统工程"],
+          chips: ["联邦学习安全"],
           focusTitle: "当前关注",
           focusList: [
-            "横向与纵向联邦学习攻防",
-            "模型投毒与鲁棒聚合机制",
-            "中英双语数据集构建",
-            "课程与科研场景下的 Agent 应用"
+            "横向联邦学习中的模型投毒与鲁棒聚合",
+            "纵向联邦学习中的标签泄露与模型保护",
+            "联邦学习异常客户端检测与防御策略"
           ]
         },
         about: {
           tag: "Profile",
           title: "个人简介",
-          intro: "页面信息根据个人简历整理，突出科研、竞赛和实践能力。教育经历仅保留核心信息，不展示课程成绩。",
+          intro: "页面信息根据个人简历整理，突出联邦学习相关研究与实践。",
           eduTitle: "教育经历",
           eduMain: "北京邮电大学 · 网络空间安全学院 · 信息安全（学士）",
           eduTime: "2023.09 - 2027.06（预计）",
           skillTitle: "能力关键词",
-          skillMain: "Python / C / C++ · Federated Learning · RAG · Multi-Agent",
+          skillMain: "Python / C / C++ · Federated Learning · Pytorch",
           skillSub: "英语：CET-4 / CET-6"
         },
         awards: {
@@ -720,14 +715,9 @@
           intro: "近两年学术竞赛与综合荣誉。",
           list: [
             {
-              meta: "2024 · 2025",
-              title: "国家励志奖学金",
-              desc: "连续两年获得，覆盖学业与综合表现。"
-            },
-            {
               meta: "2025",
               title: "全国大学生电子设计竞赛",
-              desc: "国家二等奖（C题），负责视觉模块核心开发。"
+              desc: "国家二等奖（C题）"
             },
             {
               meta: "2025",
@@ -834,15 +824,13 @@
           title: "Federated Learning Security and Intelligent Systems",
           summary: "B.S. student in Information Security at Beijing University of Posts and Telecommunications. I focus on federated learning security, model robustness, and multi-agent systems.",
           ctaGithub: "View GitHub",
-          ctaResume: "Download Resume",
           ctaMail: "Email Me",
-          chips: ["Federated Learning Security", "Multi-Agent", "Secure System Engineering"],
+          chips: ["Federated Learning Security"],
           focusTitle: "Current Focus",
           focusList: [
-            "Attack and defense in horizontal and vertical FL",
-            "Model poisoning and robust aggregation",
-            "Bilingual dataset construction",
-            "Agent applications for education and research"
+            "Model poisoning and robust aggregation in horizontal federated learning",
+            "Label leakage and model protection in vertical federated learning",
+            "Anomalous client detection and defense strategies for federated learning"
           ]
         },
         about: {
@@ -853,7 +841,7 @@
           eduMain: "BUPT, School of Cyberspace Security, B.S. in Information Security",
           eduTime: "Sep 2023 - Jun 2027 (Expected)",
           skillTitle: "Core Skills",
-          skillMain: "Python / C / C++ · Federated Learning · RAG · Multi-Agent",
+          skillMain: "Python / C / C++ · Federated Learning · Pytorch",
           skillSub: "English: CET-4 / CET-6"
         },
         awards: {
@@ -861,11 +849,6 @@
           title: "Selected Awards",
           intro: "Academic competition results and comprehensive honors in recent years.",
           list: [
-            {
-              meta: "2024 · 2025",
-              title: "National Encouragement Scholarship",
-              desc: "Received in two consecutive years for academic and overall performance."
-            },
             {
               meta: "2025",
               title: "National Undergraduate Electronic Design Contest",
@@ -1002,11 +985,8 @@
       setText("hero-title", t.hero.title);
       setText("hero-summary", t.hero.summary);
       setText("cta-github", t.hero.ctaGithub);
-      setText("cta-resume", t.hero.ctaResume);
       setText("cta-mail", t.hero.ctaMail);
       setText("chip-1", t.hero.chips[0]);
-      setText("chip-2", t.hero.chips[1]);
-      setText("chip-3", t.hero.chips[2]);
       setText("focus-title", t.hero.focusTitle);
 
       const focusList = document.getElementById("focus-list");
